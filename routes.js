@@ -9,8 +9,9 @@ const tagform = require('./controller/tagForm');
 const uploadConfig = require("./config/upload");
 const upload  = multer(uploadConfig);
 
+var cpUpload = upload.fields([{ name: 'fotocedula', maxCount: 2 }, { name: 'fototag', maxCount: 2 }])
+
 //form sending
-route.post("/form/create",upload.single("fotocedula"), tagform.registerTagAccount);
+route.post("/form/create",cpUpload, tagform.registerTagAccount);
 
 module.exports = route;
-
