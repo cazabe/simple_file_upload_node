@@ -3,7 +3,7 @@ const con = require("../db_connection");
 module.exports = {
 
     async registerTagAccount(req, res){
-        const {concesion, nombre, apellido, cedula, telefono, correo, contratpcyv, placa, marca, modelo, color, numtag} = req.body;
+        const {concesion1,concesion2,concesion3,concesion4, nombre, apellido, cedula, telefono, correo, contratpcyv, placa, marca, modelo, color, numtag} = req.body;
         const fotocedula = req.files.fotocedula[0].filename;
         const pathfotocedula = `localhost:8000/files/${fotocedula}`;
         const fototag = req.files.fototag[0].filename;
@@ -11,7 +11,10 @@ module.exports = {
 
         try {
             taghomologado = {
-                concesion,
+                concesion1,
+                concesion2,
+                concesion3,
+                concesion4,
                 nombre, 
                 apellido, 
                 cedula,
