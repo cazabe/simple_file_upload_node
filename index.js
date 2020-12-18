@@ -1,11 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const route = require("./routes");
 const con = require("./db_connection")
 const path = require("path");
 const app = express();
 
 
+
 //middleware
+app.use(cors());
 app.use(express.json());
 app.use("/files", express.static(path.resolve(__dirname,"files")));
 app.use(route);
