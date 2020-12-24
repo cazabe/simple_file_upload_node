@@ -7,16 +7,23 @@ module.exports = {
         console.log(concesion1,concesion2,concesion3,concesion4, nombre, apellido, cedula, telefono, correo, contratpcyv, placa, marca, modelo, color, numtag);
         
         // console.log("req body: ", req.body);
-        // en este esta la imagen 
-        // console.log("req files" , req.files);
-        const filefoto = req.files.fotocedula[0].filename;
-        console.log("lo que trae req.files ", filefoto);
-        const pathfotocedula = `localhost:8000/files/${filefoto}`;
+
+         //all img are found
+        console.log("req files" , req.files);
+        // In here is where the img of cedula is
+        const fileFotoCedu = req.files.fotocedula[0].filename;
+        console.log("lo que trae req.files ", fileFotoCedu);
+        const pathFotoCedula = `localhost:8000/files/${fileFotoCedu}`;
+        // In here is where the img of TAG is
+        const fileFotoTag = req.files.fototag[0].filename;
+        console.log("lo que trae req.files ", fileFotoTag);
+        const pathFotoTag = `localhost:8000/files/${fileFotoTag}`
         // const pathfotocedula = `localhost:8000/files/${fotocedula}`;
         // const fototag = req.files.fototag[0].filename;
         // const pathfototag = `localhost:8000/files/${fototag}`
         // console.log("fotos :" , fotocedula, fototag);
-        console.log(pathfotocedula);
+        console.log(pathFotoCedula);
+        console.log(pathFotoTag);
 
         try {
             taghomologado = {
@@ -29,7 +36,7 @@ module.exports = {
                 cedula,
                 telefono,
                 correo,
-                fotocedula:pathfotocedula,
+                fotocedula:pathFotoCedula,
                 contratpcyv,
                 placa,
                 marca,
@@ -37,7 +44,7 @@ module.exports = {
                 color,
                 ejes,
                 numtag,
-                // fototag:pathfototag
+                fototag:pathFotoTag
             }
             await con.query("INSERT INTO homologacion_persona set ?", [taghomologado]);
            return res.json({taghomologado});

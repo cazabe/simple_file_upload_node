@@ -8,7 +8,7 @@ const app = express();
 
 
 //middleware
-app.use(cors());
+app.use(cors());//To enable cors and not have cors error
 app.use(express.json());
 app.use("/files", express.static(path.resolve(__dirname,"files")));
 app.use(route);
