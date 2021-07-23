@@ -6,7 +6,9 @@ module.exports = {
         destination: path.resolve(__dirname,"..","files"),
         filename: (req, file, cb)=>{
             const ext = path.extname(file.originalname)
+            console.log("extension ", ext);
             const name = path.basename(file.originalname, ext)
+            console.log("name" ,name);
             cb(null, `${name.replace(/\s/g,"")}-${Date.now()}${ext}`)
         }
     })

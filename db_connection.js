@@ -1,10 +1,11 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
-var con = mysql.createConnection({
+const con = mysql.createConnection({
   host: "localhost",
-  user: "root",
+  user: process.env.MYSQL_USER,
   password: "",
-  database: "tagexpress"
+  port:process.env.MYSQL_PORT,
+  database: "multer_api"
 });
 
 module.exports = con;
